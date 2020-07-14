@@ -58,7 +58,9 @@
                     </div>
                   </div>
                   <div class="text-center">
-                    <button type="button" class="btn btn-primary my-4">Sign in</button>
+                    <button type="button" class="btn btn-primary my-4">
+                      <router-link to="/contents" class="text-white">Sign in</router-link>
+                    </button>
                   </div>
                 </form>
               </div>
@@ -93,5 +95,8 @@ export default {
 div.login {
   background: url("../assets/bg1.jpg");
   height: 100vh;
+}
+router-link {
+  color: #fff !important;
 }
 </style>
