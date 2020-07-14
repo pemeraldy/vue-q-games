@@ -24,13 +24,31 @@
         </thead>
         <tbody>
           <tr>
+            <th scope="row">Amina Ibrahim</th>
+            <td>4/10</td>
+            <td>4/12/2020</td>
+            <td>
+              <i class="fas fa-arrow-up text-success mr-3"></i> 86.53%
+            </td>
+            <td>1253dd</td>
+          </tr>
+          <tr>
+            <th scope="row">Raliat Isah Musa</th>
+            <td>5/10</td>
+            <td>4/12/2020</td>
+            <td>
+              <i class="fas fa-arrow-up text-success mr-3"></i> 98.53%
+            </td>
+            <td>1233dd</td>
+          </tr>
+          <tr>
             <th scope="row">Amina</th>
             <td>4/10</td>
             <td>4/12/2020</td>
             <td>
-              <i class="fas fa-arrow-up text-success mr-3"></i> 46,53%
+              <i class="fas fa-arrow-up text-success mr-3"></i> 86.23%
             </td>
-            <td>1253dd</td>
+            <td>113dd</td>
           </tr>
         </tbody>
       </table>
