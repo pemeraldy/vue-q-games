@@ -23,10 +23,10 @@
         <div class="navbar-collapse-header">
           <div class="row">
             <div class="col-6 collapse-brand">
-              <router-link to="/">
+              <a >
                 <!-- <img src="../assets/img/brand/blue.png" /> -->
                 GCC
-              </router-link>
+              </a>
             </div>
             <div class="col-6 collapse-close">
               <button
@@ -48,12 +48,12 @@
         <hr class="d-lg-none" />
         <ul class="navbar-nav align-items-lg-center ml-lg-auto">
           <li class="nav-item d-none d-lg-block ml-lg-4">
-            <router-link to="/admin" class="btn btn-neutral btn-icon">
+            <button class="btn btn-neutral btn-icon">
               <span class="btn-inner--icon">
                 <i class="fas fa-user mr-2"></i>
               </span>
               <span class="nav-link-inner--text">Admin</span>
-            </router-link>
+            </button>
           </li>
         </ul>
       </div>

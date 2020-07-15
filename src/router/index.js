@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Login from '../views/Login.vue'
 import StudentDashboard from '../views/StudentDashboard.vue'
+import Lessons from '../views/Lessons.vue'
 
 Vue.use(VueRouter)
 
@@ -14,7 +15,12 @@ const routes = [
   {
     path: '/contents',
     name: 'contents',
-    component: StudentDashboard
+    component: StudentDashboard,
+  },
+  {
+    path: '/lessons',
+    name: 'lesson',
+    component: Lessons
   },
   {
     path: '/Admin',

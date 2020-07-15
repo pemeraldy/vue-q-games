@@ -35,43 +35,19 @@
                   <div class="card subject-card">
                     <div class="card-body">
                       <h2 class="card-title">English</h2>
-                      <p
-                        class="card-text"
-                      >Take this lesson to speak english fluently with confidence</p>
-                      <a href="#" class="btn btn-primary">Learn</a>
-                    </div>
-                  </div>
-                  <div class="card subject-card">
-                    <div class="card-body">
-                      <h2 class="card-title">Mathematics</h2>
                       <p class="card-text">Take this lesson to get good knowledge of mathematics</p>
-                      <a href="#" class="btn bth-sm btn-primary">Learn</a>
-                      <a href="#" class="btn bth-sm btn-primary">Quiz</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="card-body d-flex">
-                  <div class="card subject-card">
-                    <div class="card-body">
-                      <h2 class="card-title">English</h2>
-                      <p
-                        class="card-text"
-                      >Take this lesson to speak english fluently with confidence</p>
-                      <a href="#" class="btn btn-primary">Learn</a>
-                    </div>
-                  </div>
-                  <div class="card subject-card">
-                    <div class="card-body">
-                      <h2 class="card-title">Mathematics</h2>
-                      <p class="card-text">Take this lesson to get good knowledge of mathematics</p>
-                      <a href="#" class="btn bth-sm btn-primary">Learn</a>
-                      <a href="#" class="btn bth-sm btn-primary">Quiz</a>
+                      <a class="btn bth-sm btn-primary">
+                        <!-- <router-link to="/lessons">Learn</router-link> -->
+                      </a>
+                      <a class="btn bth-sm btn-primary">Quiz</a>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+
+          <!-- Topics section -->
           <div class="col-xl-4">
             <div class="card">
               <div class="card-header border-0">
@@ -85,15 +61,15 @@
                 </div>
               </div>
               <div class="btn-group-vertical">
-                <button type="button" class="btn btn-secondary">1</button>
-                <button type="button" class="btn btn-secondary">1</button>
+                <button data-target="takeLessonModal" type="button" class="btn btn-secondary">1</button>
+                <button data-target="takeLessonModal" type="button" class="btn btn-secondary">1</button>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <AddStudentModal />
+    <TakeLessonModal />
   </div>
 </template>
 
@@ -101,16 +77,30 @@
 // @ is an alias to /src
 import AdminNav from "../components/AdminNav";
 // import StudentsTable from "../components/StudentsTable";
-import AddStudentModal from "../components/AddStudentModal";
+// import AddStudentModal from "../components/AddStudentModal";
 import Sidebar from "../components/Sidebar";
+import student from "../data/student";
 
+// import axios from "axios";
 export default {
   name: "Admin",
+  data() {
+    return {
+      sDetails: student
+    };
+  },
   components: {
     AdminNav,
-    // StudentsTable,
-    AddStudentModal,
     Sidebar
+  },
+  // methods: {
+  //   fecthData: function() {
+  //     axios.get("").then(resp => resp.data);
+  //   }
+  // },
+  mounted() {
+    console.log(this.sDetails);
+    // this.sDetails = this.fecthData();
   }
 };
 </script>
