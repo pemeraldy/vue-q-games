@@ -36,10 +36,6 @@
                     <div class="card-body">
                       <h2 class="card-title">English</h2>
                       <p class="card-text">Take this lesson to get good knowledge of mathematics</p>
-                      <a class="btn bth-sm btn-primary">
-                        <!-- <router-link to="/lessons">Learn</router-link> -->
-                      </a>
-                      <a class="btn bth-sm btn-primary">Quiz</a>
                     </div>
                   </div>
                 </div>
@@ -61,8 +57,17 @@
                 </div>
               </div>
               <div class="btn-group-vertical">
-                <button data-target="takeLessonModal" type="button" class="btn btn-secondary">1</button>
-                <button data-target="takeLessonModal" type="button" class="btn btn-secondary">1</button>
+                <div class="topic">
+                  <span class="badge badge-primary">Primary</span>
+                  <p>Take Lessons</p>
+                  <p>Take Assesment</p>
+                </div>
+                <button
+                  data-target="#takeLessonModal"
+                  data-toggle="modal"
+                  type="button"
+                  class="btn btn-secondary"
+                >1</button>
               </div>
             </div>
           </div>
@@ -76,6 +81,7 @@
 <script>
 // @ is an alias to /src
 import AdminNav from "../components/AdminNav";
+import TakeLessonModal from "../components/TakeLessonModal";
 // import StudentsTable from "../components/StudentsTable";
 // import AddStudentModal from "../components/AddStudentModal";
 import Sidebar from "../components/Sidebar";
@@ -84,6 +90,7 @@ import student from "../data/student";
 // import axios from "axios";
 export default {
   name: "Admin",
+
   data() {
     return {
       sDetails: student
@@ -91,7 +98,8 @@ export default {
   },
   components: {
     AdminNav,
-    Sidebar
+    Sidebar,
+    TakeLessonModal
   },
   // methods: {
   //   fecthData: function() {
@@ -104,6 +112,9 @@ export default {
   }
 };
 </script>
+
+
+
 <style scoped>
 .admin {
   background: url("../assets/bg1.jpg");

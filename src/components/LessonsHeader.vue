@@ -37,13 +37,16 @@
               <!-- Card body -->
 
               <div class="card-body lesson-subjects">
-                <audio>
+                <audio ref="intro">
                   <source v-bind:src="subjects.introVoice" />
                   <!-- <source v-bind:src="subjects.introVoice" /> -->
                 </audio>
                 <div class="row">
                   <div class="col-auto">
-                    <div class="icon icon-shape bg-gradient-success text-white">
+                    <div
+                      v-on:click="bounceKeyLetter=!bounceKeyLetter"
+                      class="icon icon-shape bg-gradient-success text-white"
+                    >
                       <i class="ni ni-active-40"></i>
                     </div>
                   </div>
@@ -54,9 +57,20 @@
                     <h1 class="text-orange text-right">{{subjects.module}}</h1>
                   </div>
                   <div class="col-12 mt-3 d-flex">
-                    <div class="card d-flex special-characters">
-                      <div class="anim anim-one bg-gradient-success">{{subjects.anim1}}</div>
-                      <div class="anim anim-two bg-gradient-success">{{subjects.anim2}}</div>
+                    <div
+                      v-for="an in subjects.anim"
+                      :key="an.anim"
+                      class="card d-flex special-characters"
+                    >
+                      <transition
+                        enter-active-class="animate__animated animate__bounceIn"
+                        leave-active-class="animate__animated animate__bounceOut"
+                      >
+                        <div
+                          v-if="bounceKeyLetter"
+                          class="anim anim-one card bg-gradient-success"
+                        >{{an.anim}}</div>
+                      </transition>
                     </div>
                   </div>
                 </div>
@@ -83,25 +97,28 @@
 
 <script>
 import importedSub from "../data/student";
+import { mapGetters } from "vuex";
 // import {Howl, Howler} from 'howler';
 export default {
   data() {
     return {
+      bounceKeyLetter: false,
       index: 0,
       subjects: []
     };
   },
+  computed: mapGetters(["allSubjects"]),
   methods: {
     playSound: function() {
-      let audio = new Audio(
-        require("../assets/sounds/phonics/level-1-phonics.mp3")
-      );
-      audio.play();
+      let audio = new Audio(this.subjects.introVoice);
+      audio.autoplay();
+      // audio.play();
     },
     nextModule: function() {
       console.log(this.index, importedSub.length);
       if (this.index < importedSub.length - 1) {
         this.index++;
+        this.playSound();
         console.log("Next", this.index);
       }
     },
@@ -109,6 +126,7 @@ export default {
       if (this.index > 0) {
         this.index--;
         console.log(this.index);
+        this.playSound();
       }
       console.log(this.index);
     }
@@ -121,7 +139,6 @@ export default {
       this.subjects = importedSub[this.index];
       console.log("name", this.subjects);
     }
-    // console.log(this.subjects[0].english);
   },
   watch: {
     index: function() {
@@ -146,8 +163,5 @@ export default {
   display: flex;
   flex-direction: row;
   width: 100%;
-}
-.card.lesson-subjects {
-  /* width: 600px !important; */
 }
 </style>

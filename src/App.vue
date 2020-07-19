@@ -1,6 +1,10 @@
 <template>
   <div id="app">
-    <transition name="router-anim">
+    <transition
+      mode="out-in"
+      enter-active-class="animate__animated animate__bounceIn"
+      leave-active-class="animate__animated animate__fadeOut"
+    >
       <router-view></router-view>
     </transition>
   </div>
@@ -12,7 +16,9 @@
 export default {
   data() {
     return {
-      lessons: []
+      lessons: [],
+      userScore: 0,
+      subjects: []
     };
   }
 };
