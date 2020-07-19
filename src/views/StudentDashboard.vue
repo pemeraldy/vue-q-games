@@ -68,7 +68,7 @@
                     <h3 class="mb-0">Topics</h3>
                   </div>
                   <div class="col text-right">
-                    <a href="#!" class="btn btn-sm btn-primary">%</a>
+                    <a href="#" class="btn btn-sm btn-primary">%</a>
                   </div>
                 </div>
               </div>
