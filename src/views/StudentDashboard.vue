@@ -34,44 +34,32 @@
                 <div class="card-body d-flex">
                   <div class="card subject-card">
                     <div class="card-body">
-                      <h2 class="card-title">English</h2>
+                      <h4 class="card-title">English</h4>
                       <p
                         class="card-text"
-                      >Take this lesson to speak english fluently with confidence</p>
-                      <a href="#" class="btn btn-primary">Learn</a>
+                      >Take this lesson to get good knowledge of English language</p>
                     </div>
                   </div>
+
                   <div class="card subject-card">
                     <div class="card-body">
-                      <h2 class="card-title">Mathematics</h2>
-                      <p class="card-text">Take this lesson to get good knowledge of mathematics</p>
-                      <a href="#" class="btn bth-sm btn-primary">Learn</a>
-                      <a href="#" class="btn bth-sm btn-primary">Quiz</a>
+                      <h4 class="card-title">Mathematics</h4>
+                      <p class="card-text">Take this lesson to get good knowledge of Mathematics</p>
                     </div>
                   </div>
-                </div>
-                <div class="card-body d-flex">
+
                   <div class="card subject-card">
                     <div class="card-body">
-                      <h2 class="card-title">English</h2>
-                      <p
-                        class="card-text"
-                      >Take this lesson to speak english fluently with confidence</p>
-                      <a href="#" class="btn btn-primary">Learn</a>
-                    </div>
-                  </div>
-                  <div class="card subject-card">
-                    <div class="card-body">
-                      <h2 class="card-title">Mathematics</h2>
-                      <p class="card-text">Take this lesson to get good knowledge of mathematics</p>
-                      <a href="#" class="btn bth-sm btn-primary">Learn</a>
-                      <a href="#" class="btn bth-sm btn-primary">Quiz</a>
+                      <h4 class="card-title">Science</h4>
+                      <p class="card-text">Take this lesson to get basic knowledge of Science</p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+
+          <!-- Topics section -->
           <div class="col-xl-4">
             <div class="card">
               <div class="card-header border-0">
@@ -80,40 +68,81 @@
                     <h3 class="mb-0">Topics</h3>
                   </div>
                   <div class="col text-right">
-                    <a href="#!" class="btn btn-sm btn-primary">%</a>
+                    <a href="#" class="btn btn-sm btn-primary">%</a>
                   </div>
                 </div>
               </div>
-              <div class="btn-group-vertical">
-                <button type="button" class="btn btn-secondary">1</button>
-                <button type="button" class="btn btn-secondary">1</button>
+
+              <div class="btn-group-vertical my-2">
+                <div class="topic mb-2 mx-2">
+                  <span class="badge badge-primary">Module 1</span>
+                </div>
+                <button
+                  data-target="#takeLessonModal"
+                  data-toggle="modal"
+                  type="button"
+                  class="btn btn-secondary"
+                >Lesson 1</button>
+                <button
+                  data-target="#takeLessonModal"
+                  data-toggle="modal"
+                  type="button"
+                  class="btn btn-secondary"
+                >Lesson 2</button>
+
+                <button
+                  data-target="#takeLessonModal"
+                  data-toggle="modal"
+                  type="button"
+                  class="btn btn-secondary"
+                >Lesson 3</button>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <AddStudentModal />
+    <TakeLessonModal />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import AdminNav from "../components/AdminNav";
+import TakeLessonModal from "../components/TakeLessonModal";
 // import StudentsTable from "../components/StudentsTable";
-import AddStudentModal from "../components/AddStudentModal";
+// import AddStudentModal from "../components/AddStudentModal";
 import Sidebar from "../components/Sidebar";
+import student from "../data/student";
 
+// import axios from "axios";
 export default {
   name: "Admin",
+
+  data() {
+    return {
+      sDetails: student
+    };
+  },
   components: {
     AdminNav,
-    // StudentsTable,
-    AddStudentModal,
-    Sidebar
+    Sidebar,
+    TakeLessonModal
+  },
+  // methods: {
+  //   fecthData: function() {
+  //     axios.get("").then(resp => resp.data);
+  //   }
+  // },
+  mounted() {
+    console.log(this.sDetails);
+    // this.sDetails = this.fecthData();
   }
 };
 </script>
+
+
+
 <style scoped>
 .admin {
   background: url("../assets/bg1.jpg");
