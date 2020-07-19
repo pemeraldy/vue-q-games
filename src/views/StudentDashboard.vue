@@ -34,8 +34,24 @@
                 <div class="card-body d-flex">
                   <div class="card subject-card">
                     <div class="card-body">
-                      <h2 class="card-title">English</h2>
-                      <p class="card-text">Take this lesson to get good knowledge of mathematics</p>
+                      <h4 class="card-title">English</h4>
+                      <p
+                        class="card-text"
+                      >Take this lesson to get good knowledge of English language</p>
+                    </div>
+                  </div>
+
+                  <div class="card subject-card">
+                    <div class="card-body">
+                      <h4 class="card-title">Mathematics</h4>
+                      <p class="card-text">Take this lesson to get good knowledge of Mathematics</p>
+                    </div>
+                  </div>
+
+                  <div class="card subject-card">
+                    <div class="card-body">
+                      <h4 class="card-title">Science</h4>
+                      <p class="card-text">Take this lesson to get basic knowledge of Science</p>
                     </div>
                   </div>
                 </div>
@@ -56,18 +72,30 @@
                   </div>
                 </div>
               </div>
-              <div class="btn-group-vertical">
-                <div class="topic">
-                  <span class="badge badge-primary">Primary</span>
-                  <p>Take Lessons</p>
-                  <p>Take Assesment</p>
+
+              <div class="btn-group-vertical my-2">
+                <div class="topic mb-2 mx-2">
+                  <span class="badge badge-primary">Module 1</span>
                 </div>
                 <button
                   data-target="#takeLessonModal"
                   data-toggle="modal"
                   type="button"
                   class="btn btn-secondary"
-                >1</button>
+                >Lesson 1</button>
+                <button
+                  data-target="#takeLessonModal"
+                  data-toggle="modal"
+                  type="button"
+                  class="btn btn-secondary"
+                >Lesson 2</button>
+
+                <button
+                  data-target="#takeLessonModal"
+                  data-toggle="modal"
+                  type="button"
+                  class="btn btn-secondary"
+                >Lesson 3</button>
               </div>
             </div>
           </div>
