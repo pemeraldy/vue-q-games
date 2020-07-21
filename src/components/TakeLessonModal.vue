@@ -47,7 +47,7 @@ import { mapGetters, mapActions } from "vuex";
 export default {
   data() {
     return {
-      moduleIntro: this.allSubjects[0].introVoice
+      // moduleIntro: this.allSubjects[0].introVoice
     };
   },
   methods: {

@@ -11,7 +11,7 @@ const state = {
             introVoice: require("../../assets/sounds/phonics/welcomeToPhonics.mp3"),
             header:
                 "In this lesson, we will be learning vowels and the sounds they make.",
-            anims: ["A", "E"]
+            anims: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N"]
         },
         {
             name: 'English',
