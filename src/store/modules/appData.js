@@ -1,39 +1,36 @@
-// import axios from 'axios'
+import axios from 'axios'
 
 
 const state = {
-    subjects: [
-        {
-            name: 'English',
-            moduleIndex: 1,
-            module: "Phonics",
-            topic: 'Vowels',
-            introVoice: require("../../assets/sounds/phonics/welcomeToPhonics.mp3"),
-            header:
-                "In this lesson, we will be learning vowels and the sounds they make.",
-            anims: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N"]
-        },
-        {
-            name: 'English',
-            moduleIndex: 2,
-            module: "Consonants",
-            topic: 'Consonants',
-            introVoice: require("../../assets/sounds/phonics/level-1-phonics.mp3"),
-            header:
-                "In this lesson, we will be learning Consonant letters and the sounds they make.",
-            anims: ["k", "M"]
-
-        }
-    ]
+    moduleIndex: 0,
+    literacy: [],
+    currentModule: {}
 }
 
 const getters = {
-    allSubjects: (state) => state.subjects
+    subjModules: (state) => state.literacy
 }
 
-const actions = {}
+const actions = {
+    async getSubjectModules({ commit }) {
+        const response = await axios.get('https://bootcamp.steamledge.com/gcc/handler.php?literacy')
+        // response.data.map(lesson => lesson.introSound = '../sounds/phonics/welcomeToPhoics.mp3')
+        commit('getAllSubjModule', response.data)
+        console.log(response.data)
+    },
+    setCurrentModule({ commit }) {
+        const currentModule = state.literacy[state.moduleIndex]
+        // if (state.literacy) {
+        commit('currentModule', currentModule)
+        // }
+        console.log(state.literacy)
+    }
+}
 
-const mutations = {}
+const mutations = {
+    getAllSubjModule: (state, data) => (state.literacy = data),
+    currentModule: (state, data) => (state.currentModule = data)
+}
 
 
 

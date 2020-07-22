@@ -3,6 +3,8 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import 'animate.css'
+import Vuemo from '@azukisiromochi/vue-mo.js'
+Vue.use(Vuemo)
 
 Vue.config.productionTip = false
 

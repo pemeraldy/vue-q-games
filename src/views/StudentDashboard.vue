@@ -27,6 +27,9 @@ import student from "../data/student";
 import SubjectLessons from "../components/SubjectLessons";
 import StudentDashboardHeader from "../components/StudentDashboardHeader";
 
+/*Data*/
+import { mapGetters, mapActions } from "vuex";
+
 export default {
   name: "Admin",
 
@@ -42,6 +45,15 @@ export default {
     StudentDashboardHeader,
     Topics,
     SubjectLessons
+  },
+  methods: {
+    ...mapActions(["getSubjectModules"])
+  },
+  computed: {
+    ...mapGetters(["subjModules"])
+  },
+  created() {
+    this.getSubjectModules();
   }
 };
 </script>
