@@ -30,17 +30,29 @@
             <tr>
               <th scope="row">Level One</th>
               <td>6 Lessons</td>
-              <div @click="playAnim" ref="box" class="box"></div>
+              <!-- <div @click="playAnim" ref="box" class="box"></div>
               <div @click="circls" ref="circl" class="circl"></div>
               <div @click="circls" ref="circl" class="circl"></div>
               <div @click="circls" ref="circl" class="circl"></div>
-              <div @click="circls" ref="circl" class="circl"></div>
-              <div class="bubble-wrapper">
+              <div @click="circls" ref="circl" class="circl"></div>-->
+              <!-- <div class="bubble-wrapper">
                 <div @click="playBubble" ref="bubble" class="bubble">
                   <img src="@/assets/img/letters/Ape.png" alt="ape" />
                   <div ref="bubblePulse" class="bubble-pulse"></div>
                 </div>
-              </div>
+              </div>-->
+            </tr>
+            <tr>
+              <th>Level Two</th>
+              <td>3 Lessons</td>
+            </tr>
+            <tr>
+              <th>Level Three</th>
+              <td>9 Lessons</td>
+            </tr>
+            <tr>
+              <th>Level four</th>
+              <td>12 Lessons</td>
             </tr>
           </tbody>
         </table>
@@ -108,13 +120,13 @@ export default {
       timeline.to(bubblePulse, 1, { scale: 0, opacity: 0 }, "+=1");
     },
     circls: function() {
-      const { circl } = this.$refs;
+      // const { circl } = this.$refs;
       const timeline = new TimelineLite();
-      timeline.from(circl, {
+      timeline.from(".circl", {
         duration: 1,
         backgroundColor: "orange",
         opacity: 0.6,
-        x: 100,
+        x: -100,
         stagger: 0.25
       });
     }

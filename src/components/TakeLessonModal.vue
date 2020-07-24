@@ -38,10 +38,10 @@
               <Burst>E</Burst>
             </span>
             <span @click="letterSound('F')" class="card anims">
-              <Burst>E</Burst>
+              <Burst>F</Burst>
             </span>
             <span @click="letterSound()" class="card anims">
-              <Burst>F</Burst>
+              <Burst>G</Burst>
             </span>
             <span @click="letterSound()" class="card anims">
               <Burst>H</Burst>
@@ -74,7 +74,7 @@
               <Burst>r</Burst>
             </span>
             <span @click="letterSound()" class="card anims">
-              <Burst>s</Burst>
+              <BurstTwo>s</BurstTwo>
             </span>
             <span @click="letterSound()" class="card anims">
               <Burst>t</Burst>
@@ -117,12 +117,15 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
+import { TimelineLite } from "gsap";
 import Burst from "./Burst";
+import BurstTwo from "./BurstTwo";
 
 export default {
   props: ["content"],
   components: {
-    Burst
+    Burst,
+    BurstTwo
   },
   data() {
     return {
@@ -149,7 +152,17 @@ export default {
     contentAnimate() {
       const { content } = this.$refs;
       console.log(content);
-      content.style.background = "black";
+      // content.style.background = "black";
+    },
+    contentStagger() {
+      const timeline = new TimelineLite();
+      timeline.from(".card.anims", {
+        duration: 1,
+        backgroundColor: "orange",
+        opacity: 0.6,
+        y: -200,
+        stagger: 0.35
+      });
     },
     replay: function() {
       this.burst.replay();
@@ -163,6 +176,7 @@ export default {
     // this.setCurrentModule("L1/PH/LS");
   },
   computed: mapGetters(["subjModules"]),
+
   mounted() {
     this.setCurrentModule("L1/PH/LS"),
       (this.burst = this.$vuemo.Burst({
@@ -191,6 +205,7 @@ export default {
         delay: "stagger(0, 25)"
       }
     });
+    this.contentStagger();
   }
 };
 </script>
@@ -201,7 +216,7 @@ export default {
   height: 80vh !important;
   right: 60px;
   background-image: url("../assets/lessonsBg.png");
-  background-size: cover;
+  background-size: cover !important;
 }
 .lessonContent {
   width: 732px;
