@@ -3,102 +3,13 @@
     <Sidebar />
     <div class="main-content" id="panel">
       <AdminNav />
-      <!-- Header -->
-      <div class="header pb-6">
-        <div class="container-fluid">
-          <div class="header-body">
-            <div class="row align-items-center py-4"></div>
-            <!-- <div class="row align-items-center py-4">
-              <div class="col text-center">
-                <a href="#" class="btn btn-sm btn-neutral">Export excel</a>
-                <a href="#" class="btn btn-sm btn-neutral">Export PDF</a>
-              </div>
-            </div>-->
-            <!-- Card stats -->
-          </div>
-        </div>
-      </div>
+      <StudentDashboardHeader />
+
+      <!-- Page content -->
       <div class="container-fluid mt--6">
         <div class="row">
-          <div class="col-xl-8">
-            <div class="card">
-              <div class="card-header border-0">
-                <div class="row align-items-center">
-                  <div class="col">
-                    <h3 class="mb-0">Subjects</h3>
-                  </div>
-                  <div class="col text-right">
-                    <a href="#!" class="btn btn-sm btn-primary">..</a>
-                  </div>
-                </div>
-                <div class="card-body d-flex">
-                  <div class="card subject-card">
-                    <div class="card-body">
-                      <h4 class="card-title">English</h4>
-                      <p
-                        class="card-text"
-                      >Take this lesson to get good knowledge of English language</p>
-                    </div>
-                  </div>
-
-                  <div class="card subject-card">
-                    <div class="card-body">
-                      <h4 class="card-title">Mathematics</h4>
-                      <p class="card-text">Take this lesson to get good knowledge of Mathematics</p>
-                    </div>
-                  </div>
-
-                  <div class="card subject-card">
-                    <div class="card-body">
-                      <h4 class="card-title">Science</h4>
-                      <p class="card-text">Take this lesson to get basic knowledge of Science</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Topics section -->
-          <div class="col-xl-4">
-            <div class="card">
-              <div class="card-header border-0">
-                <div class="row align-items-center">
-                  <div class="col">
-                    <h3 class="mb-0">Topics</h3>
-                  </div>
-                  <div class="col text-right">
-                    <a href="#" class="btn btn-sm btn-primary">%</a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="btn-group-vertical my-2">
-                <div class="topic mb-2 mx-2">
-                  <span class="badge badge-primary">Module 1</span>
-                </div>
-                <button
-                  data-target="#takeLessonModal"
-                  data-toggle="modal"
-                  type="button"
-                  class="btn btn-secondary"
-                >Lesson 1</button>
-                <button
-                  data-target="#takeLessonModal"
-                  data-toggle="modal"
-                  type="button"
-                  class="btn btn-secondary"
-                >Lesson 2</button>
-
-                <button
-                  data-target="#takeLessonModal"
-                  data-toggle="modal"
-                  type="button"
-                  class="btn btn-secondary"
-                >Lesson 3</button>
-              </div>
-            </div>
-          </div>
+          <Topics />
+          <SubjectLessons />
         </div>
       </div>
     </div>
@@ -107,15 +18,18 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import AdminNav from "../components/AdminNav";
 import TakeLessonModal from "../components/TakeLessonModal";
-// import StudentsTable from "../components/StudentsTable";
-// import AddStudentModal from "../components/AddStudentModal";
+import Topics from "../components/Topics";
+
 import Sidebar from "../components/Sidebar";
 import student from "../data/student";
+import SubjectLessons from "../components/SubjectLessons";
+import StudentDashboardHeader from "../components/StudentDashboardHeader";
 
-// import axios from "axios";
+/*Data*/
+import { mapGetters, mapActions } from "vuex";
+
 export default {
   name: "Admin",
 
@@ -127,16 +41,19 @@ export default {
   components: {
     AdminNav,
     Sidebar,
-    TakeLessonModal
+    TakeLessonModal,
+    StudentDashboardHeader,
+    Topics,
+    SubjectLessons
   },
-  // methods: {
-  //   fecthData: function() {
-  //     axios.get("").then(resp => resp.data);
-  //   }
-  // },
-  mounted() {
-    console.log(this.sDetails);
-    // this.sDetails = this.fecthData();
+  methods: {
+    ...mapActions(["getSubjectModules"])
+  },
+  computed: {
+    ...mapGetters(["subjModules"])
+  },
+  created() {
+    this.getSubjectModules();
   }
 };
 </script>
@@ -144,14 +61,4 @@ export default {
 
 
 <style scoped>
-.admin {
-  background: url("../assets/bg1.jpg");
-  background-size: cover;
-  /* height: 100vh; */
-}
-.card.subject-card {
-  border: 1px solid orange;
-  margin: 5px;
-  cursor: pointer;
-}
 </style>

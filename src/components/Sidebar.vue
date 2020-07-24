@@ -25,7 +25,13 @@
             <li class="nav-item">
               <a class="nav-link" href="#">
                 <i class="ni ni-planet text-orange"></i>
-                <span class="nav-link-text">Subjects</span>
+                <span class="nav-link-text">Lessons</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <i class="ni ni-planet text-green"></i>
+                <span class="nav-link-text">Assesment</span>
               </a>
             </li>
           </ul>
