@@ -31,6 +31,10 @@
               <th scope="row">Level One</th>
               <td>6 Lessons</td>
               <div @click="playAnim" ref="box" class="box"></div>
+              <div @click="circls" ref="circl" class="circl"></div>
+              <div @click="circls" ref="circl" class="circl"></div>
+              <div @click="circls" ref="circl" class="circl"></div>
+              <div @click="circls" ref="circl" class="circl"></div>
               <div class="bubble-wrapper">
                 <div @click="playBubble" ref="bubble" class="bubble">
                   <img src="@/assets/img/letters/Ape.png" alt="ape" />
@@ -59,8 +63,13 @@ export default {
       const { box } = this.$refs;
       const timeline = new TimelineLite();
 
-      timeline.to(box, 1, { x: 200, rotation: 90, ease: Back.easeOut });
-      timeline.to(box, 0.5, { background: "orange" }, "+=2");
+      timeline.to(box, 1, {
+        x: 100,
+        rotation: 90,
+        background: "orange",
+        ease: Back.easeOut
+      });
+      //   timeline.to(box, 0.5, { background: "orange" }, "+=2");
     },
     playBubble: function() {
       const { bubble, bubblePulse } = this.$refs;
@@ -69,7 +78,7 @@ export default {
       timeline.to(bubble, 0.4, {
         scale: 0.8,
         rotation: 16,
-        ease: Back.easeOut.config(1.7)
+        ease: Back.easeOut(1.7)
       });
       timeline.to(
         bubblePulse,
@@ -84,7 +93,7 @@ export default {
       timeline.to(bubble, 1.2, {
         scale: 1,
         rotation: "-=16",
-        ease: Elastic.easeOut.config(2.5, 0.5)
+        ease: Expo.easeOut(2.5, 0.5)
       });
       timeline.to(
         bubblePulse,
@@ -92,13 +101,28 @@ export default {
         {
           scale: 3,
           opacity: 0,
-          ease: Expo.easeOut
+          ease: Elastic.easeOut
         },
         "-=1.2"
       );
+      timeline.to(bubblePulse, 1, { scale: 0, opacity: 0 }, "+=1");
+    },
+    circls: function() {
+      const { circl } = this.$refs;
+      const timeline = new TimelineLite();
+      timeline.from(circl, {
+        duration: 1,
+        backgroundColor: "orange",
+        opacity: 0.6,
+        x: 100,
+        stagger: 0.25
+      });
     }
   },
-  mounted() {}
+  mounted() {
+    this.circls();
+  },
+  created() {}
 };
 </script>
 
@@ -139,5 +163,13 @@ export default {
   border-radius: 50%;
   opacity: 0;
   transform: scale(0);
+}
+.circl {
+  display: inline-block;
+  border-radius: 59%;
+  width: 30px;
+  height: 30px;
+  background: pink;
+  margin: 10px;
 }
 </style>

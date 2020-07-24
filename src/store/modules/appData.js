@@ -4,11 +4,12 @@ import axios from 'axios'
 const state = {
     moduleIndex: 0,
     literacy: [],
-    currentModule: {}
+    currentModule: null
 }
 
 const getters = {
-    subjModules: (state) => state.literacy
+    subjModules: (state) => state.literacy,
+    setCurrentModule: (state) => state.currentModule
 }
 
 const actions = {
@@ -18,12 +19,12 @@ const actions = {
         commit('getAllSubjModule', response.data)
         console.log(response.data)
     },
-    setCurrentModule({ commit }) {
-        const currentModule = state.literacy[state.moduleIndex]
-        // if (state.literacy) {
-        commit('currentModule', currentModule)
+    async setCurrentModule({ commit }, id) {
+        const response = await axios.get(`https://bootcamp.steamledge.com/gcc/handler.php?id=${id}`)
+        // response.data.map(lesson => lesson.introSound = '../sounds/phonics/welcomeToPhoics.mp3')
+        commit('currentModule', response.data)
+        console.log('Current Module', response.data)
         // }
-        console.log(state.literacy)
     }
 }
 

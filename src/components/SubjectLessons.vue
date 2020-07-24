@@ -17,7 +17,12 @@
             <div class="module-header">
               <hr />
               <h2>
-                <span @click="gameSound" class="badge badge-primary">Phonics</span>
+                <span
+                  @click="gameSound"
+                  data-target="#takeLessonModal"
+                  data-toggle="modal"
+                  class="badge badge-primary"
+                >Phonics</span>
               </h2>
               <hr />
               <div class="module-lessons">
