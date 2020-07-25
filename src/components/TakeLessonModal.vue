@@ -22,80 +22,14 @@
           <h3 class="mt-4 ml-3 text-white">Phonics</h3>
           <p class="text-white ml-3 animate__animated animate__fadeInUp">Lesson 1 - Letter Sounds</p>
           <div class="lessonContent">
-            <span ref="content" @click="letterSound('A')" class="card anims">
-              <Burst>A</Burst>
-            </span>
-            <span ref="content" @click="letterSound('B')" class="card anims">
-              <Burst>B</Burst>
-            </span>
-            <span @click="letterSound('C')" class="card anims">
-              <Burst>C</Burst>
-            </span>
-            <span @click="letterSound('D')" class="card anims">
-              <Burst>D</Burst>
-            </span>
-            <span @click="letterSound('E')" class="card anims">
-              <Burst>E</Burst>
-            </span>
-            <span @click="letterSound('F')" class="card anims">
-              <Burst>F</Burst>
-            </span>
-            <span @click="letterSound()" class="card anims">
-              <Burst>G</Burst>
-            </span>
-            <span @click="letterSound()" class="card anims">
-              <Burst>H</Burst>
-            </span>
-            <span @click="letterSound()" class="card anims">
-              <Burst>I</Burst>
-            </span>
-            <span @click="letterSound()" class="card anims">
-              <Burst>J</Burst>
-            </span>
-            <span @click="letterSound()" class="card anims">
-              <Burst>K</Burst>
-            </span>
-            <span @click="letterSound()" class="card anims">
-              <Burst>L</Burst>
-            </span>
-            <span @click="letterSound()" class="card anims">
-              <Burst>M</Burst>
-            </span>
-            <span @click="letterSound()" class="card anims">
-              <Burst>O</Burst>
-            </span>
-            <span @click="letterSound()" class="card anims">
-              <Burst>p</Burst>
-            </span>
-            <span @click="letterSound()" class="card anims">
-              <Burst>q</Burst>
-            </span>
-            <span @click="letterSound()" class="card anims">
-              <Burst>r</Burst>
-            </span>
-            <span @click="letterSound()" class="card anims">
-              <BurstTwo>s</BurstTwo>
-            </span>
-            <span @click="letterSound()" class="card anims">
-              <Burst>t</Burst>
-            </span>
-            <span @click="letterSound()" class="card anims">
-              <Burst>u</Burst>
-            </span>
-            <span @click="letterSound()" class="card anims">
-              <Burst>v</Burst>
-            </span>
-            <span @click="letterSound()" class="card anims">
-              <Burst>w</Burst>
-            </span>
-            <span @click="letterSound(X)" class="card anims">
-              <Burst>x</Burst>
-            </span>
-            <span @click="letterSound(Y)" class="card anims">
-              <Burst>y</Burst>
-            </span>
-            <span @click="letterSound(Z)" class="card anims">
-              <Burst>Z</Burst>
+            <span
+              v-for="letter in currentModule"
+              ref="content"
+              @click="letterSound(`${letter.content}`)"
+              :key="letter.id"
+              class="card anims"
+            >
+              <Burst>{{letter.content}}</Burst>
             </span>
           </div>
         </div>
@@ -119,13 +53,13 @@
 import { mapGetters, mapActions } from "vuex";
 import { TimelineLite } from "gsap";
 import Burst from "./Burst";
-import BurstTwo from "./BurstTwo";
+// import BurstTwo from "./BurstTwo";
 
 export default {
   props: ["content"],
   components: {
-    Burst,
-    BurstTwo
+    Burst
+    // BurstTwo
   },
   data() {
     return {
@@ -149,11 +83,7 @@ export default {
       this.contentAnimate();
       console.log(src);
     },
-    contentAnimate() {
-      const { content } = this.$refs;
-      console.log(content);
-      // content.style.background = "black";
-    },
+    contentAnimate() {},
     contentStagger() {
       const timeline = new TimelineLite();
       timeline.from(".card.anims", {
@@ -173,11 +103,14 @@ export default {
     setTopic: function() {}
   },
   created() {
-    // this.setCurrentModule("L1/PH/LS");
+    console.log(this.currentModule);
   },
-  computed: mapGetters(["subjModules"]),
+  computed: {
+    ...mapGetters(["currentModule"])
+  },
 
   mounted() {
+    console.log(this.currentModule);
     this.setCurrentModule("L1/PH/LS"),
       (this.burst = this.$vuemo.Burst({
         parent: this.$refs.vuemoElement,
@@ -212,7 +145,7 @@ export default {
 
 <style scoped>
 .modal-content {
-  width: 800px !important;
+  width: 900px !important;
   height: 80vh !important;
   right: 60px;
   background-image: url("../assets/lessonsBg.png");

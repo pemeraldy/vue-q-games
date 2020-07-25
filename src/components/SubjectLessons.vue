@@ -27,7 +27,7 @@
               <hr />
               <div class="module-lessons">
                 <p
-                  @click="lessonIntro(lesson.dir)"
+                  @click="lessonIntro(lesson.dir, lesson.unify_id)"
                   v-for="(lesson, index) in subjModules"
                   :key="lesson.unify_id"
                   data-target="#takeLessonModal"
@@ -56,12 +56,13 @@ export default {
   components: {},
 
   methods: {
-    lessonIntro(src) {
+    lessonIntro(src, lessonId) {
       if (src) {
         let audio = new Audio(require(`../assets/sounds/phonics/${src}`));
         audio.currentTime = 0;
         audio.play();
       }
+      this.setCurrentModule(lessonId);
       this.getSubjectModules();
       console.log(src);
     },
@@ -71,7 +72,7 @@ export default {
       audio.currentTime = 0;
       audio.play();
     },
-    ...mapActions(["getSubjectModules"])
+    ...mapActions(["getSubjectModules", "setCurrentModule"])
   },
   computed: {
     ...mapGetters(["subjModules"])

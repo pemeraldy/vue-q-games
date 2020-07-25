@@ -9,7 +9,7 @@ const state = {
 
 const getters = {
     subjModules: (state) => state.literacy,
-    setCurrentModule: (state) => state.currentModule
+    currentModule: (state) => state.currentModule
 }
 
 const actions = {
@@ -23,7 +23,7 @@ const actions = {
         const response = await axios.get(`https://bootcamp.steamledge.com/gcc/handler.php?ids=${id}`)
         // response.data.map(lesson => lesson.introSound = '../sounds/phonics/welcomeToPhoics.mp3')
         commit('currentModule', response.data)
-        console.log('Current Module', response.data)
+        // console.log('Current Module', state.currentModule)
         // }
     }
 }

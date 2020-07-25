@@ -94,6 +94,7 @@ export default {
 <style scoped>
 div.login {
   background: url("../assets/bg1.jpg");
+  background-repeat: no-repeat;
   height: 100vh;
 }
 router-link {
